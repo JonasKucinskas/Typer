@@ -9,21 +9,25 @@ namespace Typer
     internal class config
     {
         public int Time { get; set; }
+        public string Language { get; set; }
+
         public static void WriteToConfig(config settings)
         {
             using (StreamWriter write = new StreamWriter(@"C:\Users\Gaming\Desktop\program\c#\Typer\Typer\Config\config.cfg", false))
             {
                 write.WriteLine(settings.Time);
+                write.WriteLine(settings.Language);
             }
         }
 
         public static int ReadConfig()
         {
             int time;
-
+            string language; 
             using (StreamReader read = new StreamReader(@"C:\Users\Gaming\Desktop\program\c#\Typer\Typer\Config\config.cfg"))
             {
                 time = Int32.Parse(read.ReadLine());
+
             }
 
             return time;

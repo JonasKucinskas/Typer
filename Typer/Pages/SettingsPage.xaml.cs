@@ -28,11 +28,18 @@ namespace Typer.Pages
         private void SaveSettingsButton_Click(object sender, RoutedEventArgs e)
         {
             config settings = new config();
+            try
+            {
+                settings.Time = Int32.Parse(TimeSelectField.Text);
+                settings.Language = LanguageSelectBox.Text;
 
-            settings.Time = Int32.Parse(TimeSelectField.Text);
+            }
+            catch
+            {            
+
+            }
 
             config.WriteToConfig(settings);
-
         }
     }
 }

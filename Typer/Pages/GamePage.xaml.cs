@@ -38,14 +38,12 @@ namespace Typer
         }
         private void KeyPress(object sender, KeyEventArgs e)
         {
-
-
             Timer.Interval = TimeSpan.FromSeconds(1);
             
             Timer.Tick += Timer_Tick;
             Timer.Start();
 
-
+            
             if (AnswerField.Foreground == Brushes.Red)
             {
                 AnswerField.Foreground = Brushes.Black;

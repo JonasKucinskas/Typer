@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "gBgad6VFGEqVTy9AQcMQ7zIiHEx0jqfreo2Gmytb+NHdiYJUNYb84qaovcaQshFOjSLXzAkRXJ0Uu0JocW2m/Q==",
+  "dgSpecHash": "J19tARxCxQgL5p+u35bqLAfZWRkaw955Tx9J+bFt0W5mIPknyW6fG1uKG64vknA154yDZkihv+cHYtWPNGYiBA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Gaming\\Desktop\\program\\c#\\Typer\\Typer\\Typer.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Gaming\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

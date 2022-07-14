@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using Newtonsoft.Json;
+
 
 namespace Typer
 {
@@ -11,26 +13,29 @@ namespace Typer
         public int Time { get; set; }
         public string Language { get; set; }
 
-        public static void WriteToConfig(config settings)
+        
+
+        public static config returnConfigObject()
         {
-            using (StreamWriter write = new StreamWriter(@"C:\Users\Gaming\Desktop\program\c#\Typer\Typer\Config\config.cfg", false))
-            {
-                write.WriteLine(settings.Time);
-                write.WriteLine(settings.Language);
-            }
+            string path = Environment.CurrentDirectory + "\\Data\\Config\\config.json";
+
+            return JsonConvert.DeserializeObject<config>(File.ReadAllText(path));
         }
 
-        public static int ReadConfig()
+
+        /// <summary>
+        /// Writes to config file
+        /// </summary>
+        /// <param name="settings"></param>
+        public static void WriteToConfig(string config)
         {
-            int time;
-            string language; 
-            using (StreamReader read = new StreamReader(@"C:\Users\Gaming\Desktop\program\c#\Typer\Typer\Config\config.cfg"))
+            string path = Environment.CurrentDirectory + "\\Data\\Config\\config.json";
+
+
+            using (StreamWriter write = new StreamWriter(path, false))
             {
-                time = Int32.Parse(read.ReadLine());
-
+                write.WriteLine(config); 
             }
-
-            return time;
         }
     }
 }

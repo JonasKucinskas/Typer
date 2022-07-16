@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.IO;
 using System.Windows.Threading;
 
 namespace Typer
@@ -34,7 +34,7 @@ namespace Typer
 
         //
         
-        string FileName;
+        
 
         /// <summary>
         /// Page load.
@@ -43,12 +43,35 @@ namespace Typer
         /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            FileName = Environment.CurrentDirectory + "\\Data\\Word Files\\" + settings.Language + ".txt";
-            MainWordLabel.Text = words.ReturnRandomWord(FileName);
-            ScoreLabel.Text = "Score: 0";
+            string path = Environment.CurrentDirectory + "\\Data\\Word Files\\";
+            string FileName = Environment.CurrentDirectory + "\\Data\\Word Files\\" + settings.Language + ".txt";
+
+
+            //if settings.language file does not exist, just load first file in folder.
+            //List<string> fileNames = files.ReturnFileList(FileName);
+
+
+            try
+            {
+                MainWordLabel.Text = words.ReturnRandomWord(FileName);
+            }
+            catch
+            {
+                MessageBox.Show("Selected word file does not exist", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                Frame frame = new Frame();
+
+                frame.Content = new Pages.SettingsPage();
+
+                this.Content = frame;
+            }
+
+            ScoreLabel.Text = string.Format("Score: ", score);
             TimerLabel.Text = string.Format("{0}: {1}", "Time left", settings.Time.ToString());
             Timer.Interval = TimeSpan.FromSeconds(1);
             Timer.Tick += Timer_Tick;
+
+            
         }
 
         /// <summary>
@@ -59,6 +82,8 @@ namespace Typer
 
         private void KeyPress(object sender, KeyEventArgs e)
         {
+            string FileName = Environment.CurrentDirectory + "\\Data\\Word Files\\" + settings.Language + ".txt";
+
             Timer.Start();
 
             if (AnswerField.Foreground == Brushes.Red)//If text is red, change it back to black.
@@ -100,7 +125,12 @@ namespace Typer
                 MainWordLabel.Text = "Try again?";
                 AnswerField.IsEnabled = false;//Disable answer field.
                 Timer.Stop();
-                TryAgainButton.Visibility = Visibility.Visible;//Show try again button.
+                TryAgainButton.Visibility = Visibility.Visible;//Show "try again" button.
+
+                //Show failscreen
+                Frame frame = new Frame();
+                frame.Content = new Pages.GameFailPage();
+                this.Content = frame;
             }
 
             if (settings.Time <= 10)//If there is less than 10 seconds left, set timer colout to red.

@@ -30,12 +30,12 @@
 
         <TextBlock Grid.Row="1" Grid.Column="4" Name="SelectTimeLabel" Text="Select Time" HorizontalAlignment="Center"/>
         <TextBox Grid.Row="2" Grid.Column="4" Name="TimeSelectField" HorizontalAlignment="Center" Margin="5" Width="50" TextAlignment="Center"/>
-        <Button Name="DoneButton" Grid.Row="4" Grid.Column="4" Content="Done" Command ="NavigationCommands.BrowseBack" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-        <Button Name="SaveButton" Grid.Row="4" Grid.Column="4" Content="Save" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="SaveSettingsButton_Click" Height="20"/>
+        <Button Name="DoneButton" Grid.Row="4" Grid.Column="4" Content="Save and exit" Command ="NavigationCommands.BrowseBack" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Click="DoneButton_Click"/>
 
-        <ComboBox Name="LanguageSelectBox" SelectedIndex="0" Grid.Row="3" Grid.Column="4" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" DropDownOpened="LanguageSelect_Open">
+        <ComboBox Name="LanguageSelectBox" Grid.Row="3" Grid.Column="4" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" DropDownOpened="LanguageSelect_Open"/>
+        <Button Name="UploadWordFiles" Content="Upload word files" Grid.Row="4" Grid.Column="4" Height="20" Width="110" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="UploadWordFiles_Click_1"/>
+        <Button Name="DeleteWordFiles" Content="Delete word files" Grid.Row="4" Grid.Column="4" Height="20" Width="110" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,0,25" Click="DeleteWordFiles_Click_1"/>
 
-            
-        </ComboBox>
+
     </Grid>
 </Page>

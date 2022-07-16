@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using System.Text.Json;
 using Newtonsoft.Json;
 using System.IO;
+using Microsoft.Win32;
+using Path = System.IO.Path;
 
 namespace Typer.Pages
 {
@@ -30,35 +32,94 @@ namespace Typer.Pages
             InitializeComponent();
             TimeSelectField.Text = settings.Time.ToString();
 
+            LanguageSelectBox.IsEditable = true;
             LanguageSelectBox.Text = settings.Language;
         }
 
-        private void SaveSettingsButton_Click(object sender, RoutedEventArgs e)
+        private void LanguageSelect_Open(object sender, EventArgs e)
         {
+            string path = Environment.CurrentDirectory + "\\Data\\Word Files\\";
+            List<string> fileNames = files.ReturnFileList(path);
+
+            LanguageSelectBox.ItemsSource = fileNames;
+        }
+
+        
+
+        private void DeleteWordFiles_Click_1(object sender, RoutedEventArgs e)
+        {
+            string path = Environment.CurrentDirectory + "\\Data\\Word Files\\";
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.InitialDirectory = path;
+            dialog.Multiselect = true;
+
+
+
+            if (dialog.ShowDialog() == true)
+            {
+                string[] filenames = dialog.FileNames;
+
+                for (int i = 0; i < dialog.FileNames.Count(); i++)
+                {
+                    File.Delete(Path.Combine(path, filenames[i]));
+                }
+                MessageBox.Show("Files deleted successfuly", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            }
+        }
+
+        private void UploadWordFiles_Click_1(object sender, RoutedEventArgs e)
+        {
+            string path = Environment.CurrentDirectory + "\\Data\\Word Files\\";
+
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Multiselect = true;
+
+
+            if (dialog.ShowDialog() == true)
+            {
+                //Path.GetFileName(dialog.FileName))
+                string[] fileNames = dialog.FileNames;
+
+                for (int i = 0; i < fileNames.Count(); i++)
+                {
+                    string fileName = Path.GetFileName(fileNames[i]);
+
+                    if (!File.Exists(Path.Combine(path, fileName)))
+                    {
+                        File.Copy(fileNames[i], Path.Combine(path, fileName));
+                    }
+                    else MessageBox.Show("Error: File with this name already exists", "File error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+                MessageBox.Show("Files uploaded successfuly", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        private void DoneButton_Click(object sender, RoutedEventArgs e)
+        {
+            string path = Environment.CurrentDirectory + "\\Data\\Word Files\\";
+
+
             config settings = new config();
             try
             {
                 settings.Time = Int32.Parse(TimeSelectField.Text);
                 settings.Language = LanguageSelectBox.Text;
             }
-            catch
-            {            
-
+            catch (FormatException ex)
+            {
+                MessageBox.Show("An error just occurred: " + ex.Message, "Wrong Format", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
+            if (!files.ReturnFileList(path).Contains(LanguageSelectBox.Text))
+            {
+                MessageBox.Show("An error just occurred: Entered file name does not exist", "File does not exits", MessageBoxButton.OK, MessageBoxImage.Error);
+                LanguageSelectBox.Focus();
+            }
+
+
             config.WriteToConfig(JsonConvert.SerializeObject(settings));
-            SaveButton.Content = "Saved";
-        }
-
-        private void LanguageSelect_Open(object sender, EventArgs e)
-        {
-            string path = Environment.CurrentDirectory + "\\Data\\Word Files\\";
-            List<string> Configurations = Directory.EnumerateFiles(path)
-                                          .Select(p => System.IO.Path.GetFileNameWithoutExtension(p))
-                                          .ToList();
-            LanguageSelectBox.ItemsSource = Configurations;
-
-            SaveButton.Content = "Save";
         }
     }
 }

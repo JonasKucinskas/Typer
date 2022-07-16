@@ -29,3 +29,5 @@ C:\Users\Gaming\Desktop\program\c#\Typer\Typer\obj\Debug\net6.0-windows\Pages\Se
 C:\Users\Gaming\Desktop\program\c#\Typer\Typer\obj\Debug\net6.0-windows\Pages\SettingsPage.baml
 C:\Users\Gaming\Desktop\program\c#\Typer\Typer\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 C:\Users\Gaming\Desktop\program\c#\Typer\Typer\obj\Debug\net6.0-windows\Typer.csproj.CopyComplete
+C:\Users\Gaming\Desktop\program\c#\Typer\Typer\obj\Debug\net6.0-windows\Pages\GameFailPage.g.cs
+C:\Users\Gaming\Desktop\program\c#\Typer\Typer\obj\Debug\net6.0-windows\Pages\GameFailPage.baml

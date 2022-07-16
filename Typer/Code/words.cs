@@ -8,7 +8,7 @@ namespace Typer
 {
     internal class words
     {
-        private static int CountLinesTXt(string fileName)
+        private static int CountLinesTXT(string fileName)
         {
             int lines = 0;
             using (TextReader reader = File.OpenText(fileName))
@@ -26,10 +26,10 @@ namespace Typer
         {
 
             //Get number of lines in a file
-            int lines = CountLinesTXt(fileName);
+            int lines = CountLinesTXT(fileName);
 
-            Random rnd = new Random();
-            int r = rnd.Next(lines);//Memory efficient yes.
+            Random random = new Random();
+            int r = random.Next(lines + 1);//Memory efficient yes.
 
             return File.ReadLines(fileName).ElementAtOrDefault(r - 1);//return word.
         }

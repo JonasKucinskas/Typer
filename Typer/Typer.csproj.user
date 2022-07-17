@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Pages\GameFailPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Pages\GamePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -18,6 +21,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Pages\GameFailPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Pages\GamePage.xaml">
       <SubType>Designer</SubType>
     </Page>

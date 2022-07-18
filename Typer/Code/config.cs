@@ -13,15 +13,12 @@ namespace Typer
         public int Time { get; set; }
         public string Language { get; set; }
 
-        
-
         public static config returnConfigObject()
         {
             string path = Environment.CurrentDirectory + "\\Data\\Config\\config.json";
 
             return JsonConvert.DeserializeObject<config>(File.ReadAllText(path));
         }
-
 
         /// <summary>
         /// Writes to config file

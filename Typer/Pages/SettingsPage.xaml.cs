@@ -52,7 +52,7 @@ namespace Typer.Pages
                 {
                     File.Delete(Path.Combine(path, filePaths[i]));
                 }
-                MessageBox.Show("Files deleted successfuly", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(filePaths.Count() + " Files deleted successfuly", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
             }
         }
@@ -64,24 +64,23 @@ namespace Typer.Pages
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Multiselect = true;
 
-
             if (dialog.ShowDialog() == true)
             {
                 //Path.GetFileName(dialog.FileName))
-                string[] filePaths = dialog.FileNames;
+                string[] filePaths = dialog.FileNames;//Gets directory for all word files.
 
                 for (int i = 0; i < filePaths.Count(); i++)
                 {
                     string fileName = Path.GetFileName(filePaths[i]);//get filename from path
 
-                    if (!File.Exists(Path.Combine(path, fileName)))//if file with this name doesnt exist, create the file.
+                    if (!File.Exists(Path.Combine(path, fileName)))//if file with this name does'nt exist, create the file.
                     {
                         File.Copy(filePaths[i], Path.Combine(path, fileName));
                     }
                     else MessageBox.Show("Error: File with this name already exists", "File error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
-                MessageBox.Show("Files uploaded successfuly", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(filePaths.Count() + " Files uploaded successfuly", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 

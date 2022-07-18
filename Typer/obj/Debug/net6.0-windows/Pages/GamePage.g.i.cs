@@ -85,7 +85,7 @@ namespace Typer {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Typer;V1.0.0.0;component/pages/gamepage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Typer;component/pages/gamepage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Pages\GamePage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

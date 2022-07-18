@@ -55,9 +55,9 @@ namespace Typer
             {
                 MainWordLabel.Text = words.ReturnRandomWord(FileName);
             }
-            catch
+            catch (FileNotFoundException ex)
             {
-                MessageBox.Show("Selected word file does not exist", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
 
                 Frame frame = new Frame();
 
@@ -141,14 +141,5 @@ namespace Typer
                 TimerLabel.Foreground = Brushes.Red;
             }
         }
-
-        private static void Create(class cl)
-        {
-            cl objectas = new cl();
-
-            object.
-        }
-
-
     }
 }

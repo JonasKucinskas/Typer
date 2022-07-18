@@ -33,8 +33,8 @@ namespace Typer
         DispatcherTimer Timer = new DispatcherTimer();
 
         //
-        
-        
+
+
 
         /// <summary>
         /// Page load.
@@ -71,7 +71,7 @@ namespace Typer
             Timer.Interval = TimeSpan.FromSeconds(1);
             Timer.Tick += Timer_Tick;
 
-            
+
         }
 
         /// <summary>
@@ -125,9 +125,12 @@ namespace Typer
                 MainWordLabel.Text = "Try again?";
                 AnswerField.IsEnabled = false;//Disable answer field.
                 Timer.Stop();
-                TryAgainButton.Visibility = Visibility.Visible;//Show "try again" button.
-
                 //Show failscreen
+
+
+
+
+
                 Frame frame = new Frame();
                 frame.Content = new Pages.GameFailPage();
                 this.Content = frame;
@@ -139,14 +142,13 @@ namespace Typer
             }
         }
 
-        /// <summary>
-        /// Try again button click event. When clicked, page is reset.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TryAgainButton_Click(object sender, RoutedEventArgs e)
+        private static void Create(class cl)
         {
-            this.NavigationService.Refresh();
+            cl objectas = new cl();
+
+            object.
         }
+
+
     }
 }

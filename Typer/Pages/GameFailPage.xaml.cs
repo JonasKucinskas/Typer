@@ -24,5 +24,10 @@ namespace Typer.Pages
         {
             InitializeComponent();
         }
+
+        private void TryAgainButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Refresh();
+        }
     }
 }

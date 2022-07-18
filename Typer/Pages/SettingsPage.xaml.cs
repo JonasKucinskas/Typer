@@ -1,18 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Text.Json;
 using Newtonsoft.Json;
 using System.IO;
 using Microsoft.Win32;
@@ -49,19 +39,18 @@ namespace Typer.Pages
         private void DeleteWordFiles_Click_1(object sender, RoutedEventArgs e)
         {
             string path = Environment.CurrentDirectory + "\\Data\\Word Files\\";
+
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.InitialDirectory = path;
             dialog.Multiselect = true;
 
-
-
             if (dialog.ShowDialog() == true)
             {
-                string[] filenames = dialog.FileNames;
+                string[] filePaths = dialog.FileNames;
 
-                for (int i = 0; i < dialog.FileNames.Count(); i++)
+                for (int i = 0; i < filePaths.Count(); i++)
                 {
-                    File.Delete(Path.Combine(path, filenames[i]));
+                    File.Delete(Path.Combine(path, filePaths[i]));
                 }
                 MessageBox.Show("Files deleted successfuly", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -79,15 +68,15 @@ namespace Typer.Pages
             if (dialog.ShowDialog() == true)
             {
                 //Path.GetFileName(dialog.FileName))
-                string[] fileNames = dialog.FileNames;
+                string[] filePaths = dialog.FileNames;
 
-                for (int i = 0; i < fileNames.Count(); i++)
+                for (int i = 0; i < filePaths.Count(); i++)
                 {
-                    string fileName = Path.GetFileName(fileNames[i]);
+                    string fileName = Path.GetFileName(filePaths[i]);//get filename from path
 
-                    if (!File.Exists(Path.Combine(path, fileName)))
+                    if (!File.Exists(Path.Combine(path, fileName)))//if file with this name doesnt exist, create the file.
                     {
-                        File.Copy(fileNames[i], Path.Combine(path, fileName));
+                        File.Copy(filePaths[i], Path.Combine(path, fileName));
                     }
                     else MessageBox.Show("Error: File with this name already exists", "File error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
@@ -102,6 +91,7 @@ namespace Typer.Pages
 
 
             config settings = new config();
+
             try
             {
                 settings.Time = Int32.Parse(TimeSelectField.Text);
@@ -115,9 +105,7 @@ namespace Typer.Pages
             if (!files.ReturnFileList(path).Contains(LanguageSelectBox.Text))
             {
                 MessageBox.Show("An error just occurred: Entered file name does not exist", "File does not exits", MessageBoxButton.OK, MessageBoxImage.Error);
-                LanguageSelectBox.Focus();
             }
-
 
             config.WriteToConfig(JsonConvert.SerializeObject(settings));
         }

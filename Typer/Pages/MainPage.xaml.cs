@@ -43,7 +43,5 @@ namespace Typer.Pages
         {
             Application.Current.Shutdown();
         }
-
-        
     }
 }

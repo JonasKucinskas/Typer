@@ -1,19 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.IO;
 using System.Windows.Threading;
-using System.Media;
+using NAudio.Wave;
 
 namespace Typer
 {
@@ -34,7 +26,7 @@ namespace Typer
         //TODO: implement save score function.
         //TODO: show more words at the same time.
 
-
+        
 
         int score = 0;
         DispatcherTimer Timer = new DispatcherTimer();
@@ -93,29 +85,31 @@ namespace Typer
             if (e.Key == Key.Enter) //If enter is pressed.
             {
                 //Sound player setup.
-                SoundPlayer mediaPlayer = new SoundPlayer();
-                string path = Environment.CurrentDirectory + "\\Data\\Resources\\Sounds\\";
-                string fileName;
-                //
+                MediaPlayer mediaPlayer = new MediaPlayer();
 
+                //
+                WaveOutEvent outputDevice = new WaveOutEvent();
+                AudioFileReader audioFile;
+
+                TimerLabel.Foreground = Brushes.Red;
 
                 if (AnswerField.Text == MainWordLabel.Text)//if correct word is typed
                 {
+                    audioFile = new AudioFileReader(Environment.CurrentDirectory + "\\Data\\Resources\\Sounds\\Success.wav"); 
+                    outputDevice.Init(audioFile);
+                    outputDevice.Play();
+
                     score++;
                     ScoreLabel.Text = string.Format("{0}: {1}", "Score", score.ToString());
 
                     AnswerField.Clear(); //Clear answer field, so that next word can be typed.
                     MainWordLabel.Text = words.ReturnRandomWord(filePath);//Set new word to type.
-
-                    fileName = @"\Success.wav";
-                    mediaPlayer.SoundLocation = path + fileName;
-                    mediaPlayer.Play();
                 }
                 else
                 {
-                    fileName = @"\Mistake.wav";
-                    mediaPlayer.SoundLocation = path + fileName;
-                    mediaPlayer.Play();
+                    audioFile = new AudioFileReader(Environment.CurrentDirectory + "\\Data\\Resources\\Sounds\\Mistake.wav");
+                    outputDevice.Init(audioFile);
+                    outputDevice.Play();
 
                     AnswerField.Foreground = Brushes.Red;//if wrong word is typed, set text colour to red.
                 }
@@ -133,17 +127,11 @@ namespace Typer
             settings.Time--;
             TimerLabel.Text = string.Format("{0}: {1}", "Time left", settings.Time.ToString());
 
-
-            SoundPlayer mediaPlayer = new SoundPlayer();
-            mediaPlayer.SoundLocation = Environment.CurrentDirectory + "\\Data\\Resources\\Sounds\\Clock.wav";
-
-
             if (settings.Time == 0)
             {
                 MainWordLabel.Text = "Try again?";
                 AnswerField.IsEnabled = false;//Disable answer field.
                 Timer.Stop();
-                mediaPlayer.Stop();
 
                 //Show failscreen
                 Frame frame = new Frame();
@@ -154,9 +142,12 @@ namespace Typer
 
             if (settings.Time == 10)//If there is less than 10 seconds left, set timer colout to red.
             {
-
                 //Cant play two sounds at the same time.
-                mediaPlayer.Play();
+
+                WaveOutEvent outputDevice =  new WaveOutEvent();
+                AudioFileReader audioFile = new AudioFileReader(Environment.CurrentDirectory + "\\Data\\Resources\\Sounds\\Clock.wav");
+                outputDevice.Init(audioFile);
+                outputDevice.Play();
 
                 TimerLabel.Foreground = Brushes.Red;
             }

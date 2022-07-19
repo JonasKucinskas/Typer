@@ -31,3 +31,10 @@ C:\Users\Gaming\Desktop\program\c#\Typer\Typer\bin\Debug\net6.0-windows\Newtonso
 C:\Users\Gaming\Desktop\program\c#\Typer\Typer\obj\Debug\net6.0-windows\Typer.csproj.CopyComplete
 C:\Users\Gaming\Desktop\program\c#\Typer\Typer\obj\Debug\net6.0-windows\Pages\GameFailPage.g.cs
 C:\Users\Gaming\Desktop\program\c#\Typer\Typer\obj\Debug\net6.0-windows\Pages\GameFailPage.baml
+C:\Users\Gaming\Desktop\program\c#\Typer\Typer\bin\Debug\net6.0-windows\NAudio.dll
+C:\Users\Gaming\Desktop\program\c#\Typer\Typer\bin\Debug\net6.0-windows\NAudio.Asio.dll
+C:\Users\Gaming\Desktop\program\c#\Typer\Typer\bin\Debug\net6.0-windows\NAudio.Core.dll
+C:\Users\Gaming\Desktop\program\c#\Typer\Typer\bin\Debug\net6.0-windows\NAudio.Midi.dll
+C:\Users\Gaming\Desktop\program\c#\Typer\Typer\bin\Debug\net6.0-windows\NAudio.Wasapi.dll
+C:\Users\Gaming\Desktop\program\c#\Typer\Typer\bin\Debug\net6.0-windows\NAudio.WinForms.dll
+C:\Users\Gaming\Desktop\program\c#\Typer\Typer\bin\Debug\net6.0-windows\NAudio.WinMM.dll

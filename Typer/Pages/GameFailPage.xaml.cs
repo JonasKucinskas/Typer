@@ -21,18 +21,6 @@ namespace Typer.Pages
             this.Content = frame;
         }
 
-        private void ExitButton_Click(object sender, RoutedEventArgs e)
-        {
-
-            MessageBoxResult result = MessageBox.Show("Are you sure you want to quit the game?", "Quit", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-
-            if (result == MessageBoxResult.Yes)
-            {
-                Application.Current.Shutdown();
-            }
-        }
-
         private void GoToMenuPageButton_Click(object sender, RoutedEventArgs e)
         {
             Frame frame = new Frame();

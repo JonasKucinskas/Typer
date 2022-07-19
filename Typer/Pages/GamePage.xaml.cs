@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.IO;
 using System.Windows.Threading;
+using System.Media;
 
 namespace Typer
 {
@@ -47,11 +48,11 @@ namespace Typer
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             string path = Environment.CurrentDirectory + "\\Data\\Word Files\\";
-            string FileName = Environment.CurrentDirectory + "\\Data\\Word Files\\" + settings.Language + ".txt";
+            string filePath = Environment.CurrentDirectory + "\\Data\\Word Files\\" + settings.FileName + ".txt";
 
             try
             {
-                MainWordLabel.Text = words.ReturnRandomWord(FileName);
+                MainWordLabel.Text = words.ReturnRandomWord(filePath);
             }
             catch (FileNotFoundException ex)
             {
@@ -77,7 +78,7 @@ namespace Typer
 
         private void KeyPress(object sender, KeyEventArgs e)
         {
-            string FileName = Environment.CurrentDirectory + "\\Data\\Word Files\\" + settings.Language + ".txt";
+            string filePath = Environment.CurrentDirectory + "\\Data\\Word Files\\" + settings.FileName + ".txt";
 
             Timer.Start();
 
@@ -86,19 +87,36 @@ namespace Typer
                 AnswerField.Foreground = Brushes.Black;
             }
 
+            
+                
+
             if (e.Key == Key.Enter) //If enter is pressed.
             {
+                //Sound player setup.
+                SoundPlayer mediaPlayer = new SoundPlayer();
+                string path = Environment.CurrentDirectory + "\\Data\\Resources\\Sounds\\";
+                string fileName;
+                //
+
+
                 if (AnswerField.Text == MainWordLabel.Text)//if correct word is typed
                 {
                     score++;
                     ScoreLabel.Text = string.Format("{0}: {1}", "Score", score.ToString());
 
                     AnswerField.Clear(); //Clear answer field, so that next word can be typed.
-                    MainWordLabel.Text = words.ReturnRandomWord(FileName);//Set new word to type.
+                    MainWordLabel.Text = words.ReturnRandomWord(filePath);//Set new word to type.
 
+                    fileName = @"\Success.wav";
+                    mediaPlayer.SoundLocation = path + fileName;
+                    mediaPlayer.Play();
                 }
                 else
                 {
+                    fileName = @"\Mistake.wav";
+                    mediaPlayer.SoundLocation = path + fileName;
+                    mediaPlayer.Play();
+
                     AnswerField.Foreground = Brushes.Red;//if wrong word is typed, set text colour to red.
                 }
             }
@@ -115,11 +133,17 @@ namespace Typer
             settings.Time--;
             TimerLabel.Text = string.Format("{0}: {1}", "Time left", settings.Time.ToString());
 
+
+            SoundPlayer mediaPlayer = new SoundPlayer();
+            mediaPlayer.SoundLocation = Environment.CurrentDirectory + "\\Data\\Resources\\Sounds\\Clock.wav";
+
+
             if (settings.Time == 0)
             {
                 MainWordLabel.Text = "Try again?";
                 AnswerField.IsEnabled = false;//Disable answer field.
                 Timer.Stop();
+                mediaPlayer.Stop();
 
                 //Show failscreen
                 Frame frame = new Frame();
@@ -128,8 +152,12 @@ namespace Typer
                 //
             }
 
-            if (settings.Time <= 10)//If there is less than 10 seconds left, set timer colout to red.
+            if (settings.Time == 10)//If there is less than 10 seconds left, set timer colout to red.
             {
+
+                //Cant play two sounds at the same time.
+                mediaPlayer.Play();
+
                 TimerLabel.Foreground = Brushes.Red;
             }
         }

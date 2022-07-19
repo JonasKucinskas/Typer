@@ -23,7 +23,7 @@ namespace Typer.Pages
             TimeSelectField.Text = settings.Time.ToString();
 
             LanguageSelectBox.IsEditable = true;
-            LanguageSelectBox.Text = settings.Language;
+            LanguageSelectBox.Text = settings.FileName;
         }
 
         private void LanguageSelect_Open(object sender, EventArgs e)
@@ -94,7 +94,7 @@ namespace Typer.Pages
             try
             {
                 settings.Time = Int32.Parse(TimeSelectField.Text);
-                settings.Language = LanguageSelectBox.Text;
+                settings.FileName = LanguageSelectBox.Text;
             }
             catch (FormatException ex)
             {

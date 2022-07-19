@@ -88,7 +88,6 @@ namespace Typer.Pages
         {
             string path = Environment.CurrentDirectory + "\\Data\\Word Files\\";
 
-
             config settings = new config();
 
             try

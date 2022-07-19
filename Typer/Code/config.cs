@@ -11,7 +11,7 @@ namespace Typer
     internal class config
     {
         public int Time { get; set; }
-        public string Language { get; set; }
+        public string FileName { get; set; }
 
         public static config returnConfigObject()
         {

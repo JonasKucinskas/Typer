@@ -48,5 +48,17 @@ namespace Typer.Pages
                 Application.Current.Shutdown();
             }
         }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            SettingsPage settingsPage = new SettingsPage();
+            this.NavigationService.Navigate(settingsPage);
+        }
+
+        private void PlayButton_Click(object sender, RoutedEventArgs e)
+        {
+            GamePage gamePage = new GamePage();
+            this.NavigationService.Navigate(gamePage);
+        }
     }
 }

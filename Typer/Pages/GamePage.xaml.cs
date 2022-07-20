@@ -22,11 +22,9 @@ namespace Typer
         config settings = config.returnConfigObject();
 
         //TODO: clean the code up my boy:
-        //TODO: implement sounds.
+        //TODO: implement more sounds;
         //TODO: implement save score function.
         //TODO: show more words at the same time.
-
-        
 
         int score = 0;
         DispatcherTimer Timer = new DispatcherTimer();
@@ -40,7 +38,7 @@ namespace Typer
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             string path = Environment.CurrentDirectory + "\\Data\\Word Files\\";
-            string filePath = Environment.CurrentDirectory + "\\Data\\Word Files\\" + settings.FileName + ".txt";
+            string filePath = path + settings.FileName + ".txt";
 
             try
             {
@@ -51,9 +49,9 @@ namespace Typer
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
 
                 //Page.Content can only be set to frame, so I need to do this.
-                Frame frame = new Frame();
-                frame.Content = new Pages.SettingsPage();
-                this.Content = frame;
+
+                Pages.SettingsPage page = new Pages.SettingsPage();
+                this.NavigationService.Navigate(page);
             }
 
             ScoreLabel.Text = string.Format("{0}: {1}","Score", score);
@@ -107,9 +105,13 @@ namespace Typer
                 }
                 else
                 {
+
+                    //TODO: ideti i metoda:
                     audioFile = new AudioFileReader(Environment.CurrentDirectory + "\\Data\\Resources\\Sounds\\Mistake.wav");
                     outputDevice.Init(audioFile);
                     outputDevice.Play();
+                    //
+
 
                     AnswerField.Foreground = Brushes.Red;//if wrong word is typed, set text colour to red.
                 }
@@ -134,9 +136,8 @@ namespace Typer
                 Timer.Stop();
 
                 //Show failscreen
-                Frame frame = new Frame();
-                frame.Content = new Pages.GameFailPage();
-                this.Content = frame;
+                Pages.GameFailPage failPage = new Pages.GameFailPage();
+                this.NavigationService.Navigate(failPage);
                 //
             }
 

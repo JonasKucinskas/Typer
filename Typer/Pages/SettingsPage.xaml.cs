@@ -52,8 +52,8 @@ namespace Typer.Pages
                 {
                     File.Delete(Path.Combine(path, filePaths[i]));
                 }
-                MessageBox.Show(filePaths.Count() + " Files deleted successfuly", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
+                MessageBox.Show(filePaths.Count() + " Files deleted successfuly", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -80,7 +80,7 @@ namespace Typer.Pages
                     else MessageBox.Show("Error: File with this name already exists", "File error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
-                MessageBox.Show(filePaths.Count() + " Files uploaded successfuly", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(filePaths.Length + " Files uploaded successfuly", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -93,19 +93,18 @@ namespace Typer.Pages
             try
             {
                 settings.Time = Int32.Parse(TimeSelectField.Text);
-                settings.FileName = LanguageSelectBox.Text;
             }
             catch (FormatException ex)
             {
                 MessageBox.Show("An error just occurred: " + ex.Message, "Wrong Format", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-            if (!files.ReturnFileList(path).Contains(LanguageSelectBox.Text))
+            if (File.Exists(path + LanguageSelectBox.Text + ".txt"))
             {
-                MessageBox.Show("An error just occurred: Entered file name does not exist", "File does not exits", MessageBoxButton.OK, MessageBoxImage.Error);
+                settings.FileName = LanguageSelectBox.Text;//
+                config.WriteToConfig(JsonConvert.SerializeObject(settings));
             }
-
-            config.WriteToConfig(JsonConvert.SerializeObject(settings));
+            else MessageBox.Show("An error just occurred: Entered file name does not exist", "File does not exits", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }

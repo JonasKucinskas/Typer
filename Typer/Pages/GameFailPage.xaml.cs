@@ -15,19 +15,20 @@ namespace Typer.Pages
 
         private void TryAgainButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame frame = new Frame();
-
-            frame.Content = new GamePage();
-            this.Content = frame;
+            GamePage gamePage = new GamePage();
+            this.NavigationService.Navigate(gamePage);
         }
 
         private void GoToMenuPageButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame frame = new Frame();
-
-            frame.Content = new MainPage();
-            this.Content = frame;
+            MainPage mainPage = new MainPage();
+            this.NavigationService.Navigate(mainPage);
         }
-    
+
+        private void SaveScoreTextBox_Click(object sender, RoutedEventArgs e)
+        {
+            ScorePage scorePage = new ScorePage();
+            this.NavigationService.Navigate(scorePage);
+        }
     }
 }

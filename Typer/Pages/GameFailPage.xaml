@@ -34,7 +34,7 @@
 
         <TextBlock x:Name="FailScreenTextbox" Text="Time is up!" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Center" Margin="10" FontFamily="Goudy Old Style" FontSize="36"/>
         <Button Content="Try Again" Name="TryAgainButton" Grid.Row="2" Grid.Column="4" Visibility="Visible" Click="TryAgainButton_Click" Width="60" Margin="10"/>
-        <Button x:Name="SaveScoreTextBox" Content="Save score" Grid.Row="3" Grid.Column="4" HorizontalAlignment="Center" Margin="10"/>
+        <Button x:Name="SaveScoreTextBox" Content="Save score" Grid.Row="3" Grid.Column="4" HorizontalAlignment="Center" Margin="10" Click="SaveScoreTextBox_Click"/>
         <Button x:Name="GoToMenuPageButton" Content="Main Menu" Grid.Row="4" Grid.Column="4" HorizontalAlignment="Center" Margin="10" Click="GoToMenuPageButton_Click"/>
 
     </Grid>

@@ -9,18 +9,6 @@
       Title="ScorePage">
 
     <Grid Background="White">
-        <DataGrid AutoGenerateColumns="False" 
-          Height="334" 
-          HorizontalAlignment="Center" 
-          Name="ScoreList" 
-          VerticalAlignment="Center" 
-          Width="732">
-            <DataGrid.Columns >
-                <DataGridTextColumn Binding="{Binding Path=A}" MinWidth="50" />
-                <DataGridTextColumn Binding="{Binding Path=B}" MinWidth="50" />
-                <DataGridTextColumn Binding="{Binding Path=C}" MinWidth="50" />
-            </DataGrid.Columns>
-
-        </DataGrid>
+        <DataGrid Height="334" Width="732" HorizontalAlignment="Center" Name="ScoreTable" VerticalAlignment="Center"/>
     </Grid>
 </Page>

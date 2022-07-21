@@ -24,9 +24,10 @@ namespace Typer
         //TODO: clean the code up my boy:
         //TODO: implement more sounds;
         //TODO: implement save score function.
-        //TODO: show more words at the same time.
+        //TODO: show more words at the same timeLeft.
 
-        int score = 0;
+        public int score = 0;
+        int timeLeft; 
         DispatcherTimer Timer = new DispatcherTimer();
         //
 
@@ -37,6 +38,8 @@ namespace Typer
         /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            timeLeft = settings.Time;
+
             string path = Environment.CurrentDirectory + "\\Data\\Word Files\\";
             string filePath = path + settings.FileName + ".txt";
 
@@ -55,7 +58,7 @@ namespace Typer
             }
 
             ScoreLabel.Text = string.Format("{0}: {1}","Score", score);
-            TimerLabel.Text = string.Format("{0}: {1}", "Time left", settings.Time);
+            TimerLabel.Text = string.Format("{0}: {1}", "Time left", timeLeft);
             Timer.Interval = TimeSpan.FromSeconds(1);
             Timer.Tick += Timer_Tick;
         }
@@ -124,12 +127,13 @@ namespace Typer
         /// <param name="sender"></param>
         /// <param name="e"></param>
 
+
         private void Timer_Tick(object? sender, EventArgs e)
         {
-            settings.Time--;
-            TimerLabel.Text = string.Format("{0}: {1}", "Time left", settings.Time.ToString());
+            timeLeft--;
+            TimerLabel.Text = string.Format("{0}: {1}", "Time left", timeLeft.ToString());
 
-            if (settings.Time == 0)
+            if (timeLeft == 0)
             {
                 MainWordLabel.Text = "Try again?";
                 AnswerField.IsEnabled = false;//Disable answer field.
@@ -139,12 +143,12 @@ namespace Typer
                 Pages.GameFailPage failPage = new Pages.GameFailPage();
                 this.NavigationService.Navigate(failPage);
                 //
+
+
             }
 
-            if (settings.Time == 10)//If there is less than 10 seconds left, set timer colout to red.
+            if (timeLeft == 10)//If there is less than 10 seconds left, set timer colout to red.
             {
-                //Cant play two sounds at the same time.
-
                 WaveOutEvent outputDevice =  new WaveOutEvent();
                 AudioFileReader audioFile = new AudioFileReader(Environment.CurrentDirectory + "\\Data\\Resources\\Sounds\\Clock.wav");
                 outputDevice.Init(audioFile);
@@ -152,6 +156,11 @@ namespace Typer
 
                 TimerLabel.Foreground = Brushes.Red;
             }
+        }
+
+        public int Return()
+        {
+            return score;
         }
     }
 }

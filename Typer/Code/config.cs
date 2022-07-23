@@ -8,30 +8,29 @@ using Newtonsoft.Json;
 
 namespace Typer
 {
-    internal class config
+    internal class Config
     {
         public int Time { get; set; }
         public string FileName { get; set; }
 
-        public static config returnConfigObject()
+        public static Config returnConfigObject()
         {
             string path = Environment.CurrentDirectory + "\\Data\\Config\\config.json";
 
-            return JsonConvert.DeserializeObject<config>(File.ReadAllText(path));
+            return JsonConvert.DeserializeObject<Config>(File.ReadAllText(path));
         }
 
         /// <summary>
         /// Writes to config file
         /// </summary>
         /// <param name="settings"></param>
-        public static void WriteToConfig(string config)
+        public static void WriteToConfig(Config cfg)
         {
             string path = Environment.CurrentDirectory + "\\Data\\Config\\config.json";
 
-
             using (StreamWriter write = new StreamWriter(path, false))
             {
-                write.WriteLine(config); 
+                write.WriteLine(JsonConvert.SerializeObject(cfg)); 
             }
         }
     }

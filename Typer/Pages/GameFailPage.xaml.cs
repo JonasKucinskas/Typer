@@ -29,6 +29,7 @@ namespace Typer.Pages
         {
             ScorePage scorePage = new ScorePage();
             this.NavigationService.Navigate(scorePage);
+
         }
     }
 }

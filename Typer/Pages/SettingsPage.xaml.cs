@@ -17,13 +17,13 @@ namespace Typer.Pages
     {
         public SettingsPage()
         {
-            config settings = config.returnConfigObject();
+            Config config = Config.returnConfigObject();
 
             InitializeComponent();
-            TimeSelectField.Text = settings.Time.ToString();
+            TimeSelectField.Text = config.Time.ToString();
 
             LanguageSelectBox.IsEditable = true;
-            LanguageSelectBox.Text = settings.FileName;
+            LanguageSelectBox.Text = config.FileName;
         }
 
         private void LanguageSelect_Open(object sender, EventArgs e)
@@ -88,11 +88,11 @@ namespace Typer.Pages
         {
             string path = Environment.CurrentDirectory + "\\Data\\Word Files\\";
 
-            config settings = new config();
+            Config config = new Config();
 
             try
             {
-                settings.Time = Int32.Parse(TimeSelectField.Text);
+                config.Time = Int32.Parse(TimeSelectField.Text);
             }
             catch (FormatException ex)
             {
@@ -101,8 +101,8 @@ namespace Typer.Pages
 
             if (File.Exists(path + LanguageSelectBox.Text + ".txt"))
             {
-                settings.FileName = LanguageSelectBox.Text;//
-                config.WriteToConfig(JsonConvert.SerializeObject(settings));
+                config.FileName = LanguageSelectBox.Text;//
+                Config.WriteToConfig(config);
             }
             else MessageBox.Show("An error just occurred: Entered file name does not exist", "File does not exits", MessageBoxButton.OK, MessageBoxImage.Error);
         }

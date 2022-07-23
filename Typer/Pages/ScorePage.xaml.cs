@@ -27,6 +27,8 @@ namespace Typer.Pages
         {
             InitializeComponent();
 
+            Score score = new Score();
+
             //this.ScoreTable.ItemsSource = users;
         }
 

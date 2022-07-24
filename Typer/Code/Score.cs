@@ -13,17 +13,23 @@ using System.Xml.Serialization;
 
 namespace Typer
 {
-    
+    [XmlRoot("Scores")]
+    [Serializable]
     public class Score
     {
+        [XmlElement(ElementName = "Name")]
         public string Name { get; set; }
 
+        [XmlElement(ElementName = "FileName")]
         public string FileName { get; set; }
 
+        [XmlElement(ElementName = "WordCount")]
         public int WordCount { get; set; }
 
+        [XmlElement(ElementName = "Time")]
         public int Time { get; set; }
 
+        [XmlElement(ElementName = "Date")]
         public string Date = DateTime.Now.ToString("yyyy/M/d");
 
         public DataGrid SetTable()
@@ -147,13 +153,12 @@ namespace Typer
         {
             string path = Environment.CurrentDirectory + "\\Data\\Scores\\Scores.xml";
             List<Score> listAllEntries = new List<Score>();
-            XmlSerializer serializer = new XmlSerializer(typeof(Score));
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Score>));
 
             using (FileStream reader = new FileStream(path, FileMode.Open, FileAccess.Read))
             {
-                
-                Score score = (Score)serializer.Deserialize(reader);
-                listAllEntries.Add(score);
+
+                listAllEntries = (List<Score>)serializer.Deserialize(reader);
             }
 
             return listAllEntries;

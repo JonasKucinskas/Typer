@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,15 +24,23 @@ namespace Typer.Pages
     /// </summary>
     public partial class ScorePage : Page
     {
+
         public ScorePage()
         {
-            InitializeComponent();
+            List<Score> scores = Score.ReturnScores();
 
             Score score = new Score();
 
-            //this.ScoreTable.ItemsSource = users;
-        }
+            score.WordCount = 80;
+            score.Name = GamePage.ScoreInstance.Name;
+            score.Time = GamePage.ScoreInstance.Time;
+            score.FileName = GamePage.ScoreInstance.FileName;
 
-        
+            scores.Add(score);
+
+            InitializeComponent();
+            Score.SetTable(ScoreTable, scores);
+            score.WriteScoreToXmlFile();
+        }
     }
 }

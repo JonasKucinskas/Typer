@@ -26,11 +26,17 @@ namespace Typer
         //TODO: implement more sounds;
         //TODO: implement save score function.
         //TODO: show more words at the same timeLeft.
+        //Kai baigiasi zaidimas, issaugoti objekta, 
 
-        int score = 0;
+        int wordCount = 0;
         int timeLeft; 
         DispatcherTimer timer = new DispatcherTimer();
-        Score score1 = new Score();
+        private static readonly Score score = new Score();
+
+        public static Score ScoreInstance
+        {
+            get { return score; }
+        }
 
         /// <summary>
         /// Page load.
@@ -57,7 +63,7 @@ namespace Typer
                 this.NavigationService.Navigate(page);
             }
 
-            ScoreLabel.Text = string.Format("{0}: {1}","Score", score);
+            ScoreLabel.Text = string.Format("{0}: {1}","Score", wordCount);
             TimerLabel.Text = string.Format("{0}: {1}", "Time left", timeLeft);
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += Timer_Tick;
@@ -72,7 +78,6 @@ namespace Typer
         private void KeyPress(object sender, KeyEventArgs e)
         {
             string filePath = Environment.CurrentDirectory + "\\Data\\Word Files\\" + config.FileName + ".txt";
-
             timer.Start();
 
             if (AnswerField.Foreground == Brushes.Red)//If text is red, change it back to black.
@@ -94,15 +99,15 @@ namespace Typer
                     outputDevice.Init(audioFile);
                     outputDevice.Play();
 
-                    score++;
-                    ScoreLabel.Text = string.Format("{0}: {1}", "Score", score.ToString());
+                    wordCount++;
+                    ScoreLabel.Text = string.Format("{0}: {1}", "Score", wordCount.ToString());
 
                     AnswerField.Clear(); //Clear answer field, so that next word can be typed.
                     MainWordLabel.Text = words.ReturnRandomWord(filePath);//Set new word to type.
                 }
                 else
                 {
-                    //TODO: ideti i metoda:
+                    //TODO: ideti i metoda? gal?
                     audioFile = new AudioFileReader(Environment.CurrentDirectory + "\\Data\\Resources\\Sounds\\Mistake.wav");
                     outputDevice.Init(audioFile);
                     outputDevice.Play();
@@ -132,17 +137,11 @@ namespace Typer
                 Pages.GameFailPage failPage = new Pages.GameFailPage();
                 this.NavigationService.Navigate(failPage);
                 //
-
-                score1.WordCount = score;
-                score1.Time = config.Time;
-                score1.Name = "";
-                score1.FileName = config.FileName;
-                score1.WriteScoreToXmlFile();
-
-
-
-                List<Score> score12 = Score.ReturnScoreObject();
-
+                score.WordCount = wordCount;
+                score.Name = "";
+                score.Time = config.Time;
+                score.FileName = config.FileName;
+                //score.WriteScoreToXmlFile();//
             }
 
             if (timeLeft == 10)//If there is less than 10 seconds left, set timer colout to red.

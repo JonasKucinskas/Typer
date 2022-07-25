@@ -13,23 +13,27 @@ using System.Xml.Serialization;
 
 namespace Typer
 {
-    
+    [XmlRoot("Scores")]
+    [Serializable]
     public class Score
     {
+        [XmlElement(ElementName = "Name")]
         public string Name { get; set; }
 
+        [XmlElement(ElementName = "FileName")]
         public string FileName { get; set; }
 
+        [XmlElement(ElementName = "WordCount")]
         public int WordCount { get; set; }
 
+        [XmlElement(ElementName = "Time")]
         public int Time { get; set; }
 
-        public string Date = DateTime.Now.ToString("yyyy/M/d");
-
-        public DataGrid SetTable()
+        [XmlElement(ElementName = "Date")]
+        public string Date = DateTime.Now.ToString();
+        public static void SetTable(DataGrid ScoreTable, List<Score> scores)
         {
             DataTable dt = new DataTable();
-
             DataColumn column;
             DataView view;
 
@@ -69,91 +73,98 @@ namespace Typer
             column.ReadOnly = true;
             dt.Columns.Add(column);
 
-            DataGrid ScoreTable = new DataGrid();
+            for (int i = 0; i < scores.Count; i++)
+            {
+                Score score = scores[i];
 
-            DataRow row = dt.NewRow();
-            row["Id"] = ScoreTable.Items.Count + 1;
-            row["Name"] = this.Name;
-            row["WordCount"] = this.WordCount;
-            row["Time"] = this.Time;
-            row["FileName"] = this.FileName;
-            row["Date"] = this.Date;
+                DataRow row = dt.NewRow();
+                row["Id"] = i + 1;
+                row["Name"] = score.Name;
+                row["WordCount"] = score.WordCount;
+                row["Time"] = score.Time;
+                row["FileName"] = score.FileName;
+                row["Date"] = score.Date;
 
-            dt.Rows.Add(row);
+
+                dt.Rows.Add(row);
+            }
 
             view = new DataView(dt);
             ScoreTable.ItemsSource = view;
             ScoreTable.IsReadOnly = false;
-
-            return ScoreTable;
         }
 
         public void WriteScoreToXmlFile()
         {
 
             /*
-            XmlSerializer serializer = new XmlSerializer(typeof(Score));
             XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
-            
+            ns.Add("", "");
             var xml = "";
             
             using (StringWriter writer = new StringWriter())
             {
-                serializer.Serialize(writer, score);
+                serializer.Serialize(writer, score1);
                 
                 xml = writer.ToString(); // Your XML
             }
-            using (StringWriter write = new StringWriter())
+            
+            using (StreamWriter write = new StreamWriter(path, false))
             {
-                serializer.Serialize(write, score);
-                xml = write.ToString();
-                File.WriteAllText(path, xml);
-
+                serializer.Serialize(write, scores);
             }
             */
+
             string path = Environment.CurrentDirectory + "\\Data\\Scores\\Scores.xml";
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Score>));
+
+            Score score = new Score();
+            score.Date = this.Date;
+            score.FileName = this.FileName;
+            score.Name = this.Name;
+            score.WordCount = this.WordCount;
+
+
+            List<Score> scores = new List<Score>();
+            scores.Add(score);
 
             XmlDocument doc = new XmlDocument();
             doc.Load(path);
-            XmlNode score = doc.CreateElement("Score");
+            XmlNode scoreNode = doc.CreateElement("Score");
 
             XmlNode name = doc.CreateElement("Name");
             name.InnerText = this.Name;
-            score.AppendChild(name);
+            scoreNode.AppendChild(name);
 
             XmlNode wordCount = doc.CreateElement("WordCount");
             wordCount.InnerText = this.WordCount.ToString();
-            score.AppendChild(wordCount);
+            scoreNode.AppendChild(wordCount);
 
             XmlNode fileName = doc.CreateElement("FileName");
             fileName.InnerText = this.FileName; 
-            score.AppendChild(fileName);
+            scoreNode.AppendChild(fileName);
 
             XmlNode time = doc.CreateElement("Time");
             time.InnerText = this.Time.ToString();
-            score.AppendChild(time);
+            scoreNode.AppendChild(time);
 
             XmlNode date = doc.CreateElement("Date");
             date.InnerText = this.Date;
-            score.AppendChild(date);
+            scoreNode.AppendChild(date);
 
-            doc.DocumentElement.AppendChild(score);
+            doc.DocumentElement.AppendChild(scoreNode);
             doc.Save(path);
+            
         }
-
-        
-        
-        public static List<Score> ReturnScoreObject()
+        public static List<Score> ReturnScores()
         {
             string path = Environment.CurrentDirectory + "\\Data\\Scores\\Scores.xml";
             List<Score> listAllEntries = new List<Score>();
-            XmlSerializer serializer = new XmlSerializer(typeof(Score));
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Score>));
 
-            using (FileStream reader = new FileStream(path, FileMode.Open, FileAccess.Read))
+            using (StreamReader reader = new StreamReader(path))
             {
-                
-                Score score = (Score)serializer.Deserialize(reader);
-                listAllEntries.Add(score);
+                listAllEntries = (List<Score>)serializer.Deserialize(reader);
             }
 
             return listAllEntries;

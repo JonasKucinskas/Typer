@@ -1,3 +1,260 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Score xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-</Score>
+<ArrayOfScore xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Score>
+    <Name>test</Name>
+    <WordCount>0</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-7-25</Date>
+  </Score>
+  <Score>
+    <Name>test</Name>
+    <WordCount>0</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-7-25</Date>
+  </Score>
+  <Score>
+    <Name>test</Name>
+    <WordCount>1</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-7-25</Date>
+  </Score>
+  <Score>
+    <Name>test</Name>
+    <WordCount>0</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-7-25</Date>
+  </Score>
+  <Score>
+    <Name>test</Name>
+    <WordCount>0</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-7-25</Date>
+  </Score>
+  <Score>
+    <Name>test</Name>
+    <WordCount>1</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-7-25</Date>
+  </Score>
+  <Score>
+    <Name>test</Name>
+    <WordCount>0</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-7-25</Date>
+  </Score>
+  <Score>
+    <Name>test</Name>
+    <WordCount>1</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-7-25</Date>
+  </Score>
+  <Score>
+    <Name>test</Name>
+    <WordCount>0</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-7-25</Date>
+  </Score>
+  <Score>
+    <Name>test</Name>
+    <WordCount>0</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-7-25</Date>
+  </Score>
+  <Score>
+    <Name>test</Name>
+    <WordCount>0</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-7-25</Date>
+  </Score>
+  <Score>
+    <Name>test</Name>
+    <WordCount>0</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-7-25</Date>
+  </Score>
+  <Score>
+    <Name>test</Name>
+    <WordCount>1</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-7-25</Date>
+  </Score>
+  <Score>
+    <Name>test</Name>
+    <WordCount>0</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-7-25</Date>
+  </Score>
+  <Score>
+    <Name>test</Name>
+    <WordCount>0</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-7-25</Date>
+  </Score>
+  <Score>
+    <Name>test</Name>
+    <WordCount>1</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-07-25 16:07:05</Date>
+  </Score>
+  <Score>
+    <Name>test</Name>
+    <WordCount>1</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-07-25 16:10:29</Date>
+  </Score>
+  <Score>
+    <Name>test</Name>
+    <WordCount>2</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-07-25 16:15:56</Date>
+  </Score>
+  <Score>
+    <Name>test</Name>
+    <WordCount>1</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-07-25 16:16:18</Date>
+  </Score>
+  <Score>
+    <Name>test</Name>
+    <WordCount>0</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-07-25 16:18:54</Date>
+  </Score>
+  <Score>
+    <Name>test</Name>
+    <WordCount>0</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-07-25 16:19:22</Date>
+  </Score>
+  <Score>
+    <Name>test</Name>
+    <WordCount>0</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-07-25 16:20:38</Date>
+  </Score>
+  <Score>
+    <Name>test</Name>
+    <WordCount>1</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-07-25 16:23:37</Date>
+  </Score>
+  <Score>
+    <Name>
+    </Name>
+    <WordCount>0</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-07-25 16:59:59</Date>
+  </Score>
+  <Score>
+    <Name>
+    </Name>
+    <WordCount>80</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-07-25 17:59:44</Date>
+  </Score>
+  <Score>
+    <Name>
+    </Name>
+    <WordCount>80</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-07-25 18:00:03</Date>
+  </Score>
+  <Score>
+    <Name>
+    </Name>
+    <WordCount>80</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-07-25 20:12:54</Date>
+  </Score>
+  <Score>
+    <Name>
+    </Name>
+    <WordCount>80</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-07-25 20:14:01</Date>
+  </Score>
+  <Score>
+    <Name>
+    </Name>
+    <WordCount>80</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-07-25 20:19:36</Date>
+  </Score>
+  <Score>
+    <Name>
+    </Name>
+    <WordCount>80</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-07-25 20:21:31</Date>
+  </Score>
+  <Score>
+    <Name>
+    </Name>
+    <WordCount>80</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-07-25 20:29:26</Date>
+  </Score>
+  <Score>
+    <Name>
+    </Name>
+    <WordCount>80</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-07-25 20:39:49</Date>
+  </Score>
+  <Score>
+    <Name>
+    </Name>
+    <WordCount>80</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-07-25 20:41:17</Date>
+  </Score>
+  <Score>
+    <Name>
+    </Name>
+    <WordCount>80</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-07-25 20:41:56</Date>
+  </Score>
+  <Score>
+    <Name>
+    </Name>
+    <WordCount>80</WordCount>
+    <FileName>Lithuanian</FileName>
+    <Time>2</Time>
+    <Date>2022-07-25 20:44:04</Date>
+  </Score>
+</ArrayOfScore>

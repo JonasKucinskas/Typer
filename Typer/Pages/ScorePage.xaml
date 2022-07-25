@@ -9,6 +9,6 @@
       Title="ScorePage">
 
     <Grid Background="White">
-        <DataGrid Height="334" Width="732" HorizontalAlignment="Center" Name="ScoreTable" VerticalAlignment="Center"/>
+        <DataGrid Height="334" Width="732" HorizontalAlignment="Center" Name="ScoreTable" VerticalAlignment="Center" BeginningEdit="ScoreTable_BeginningEdit"/>
     </Grid>
 </Page>

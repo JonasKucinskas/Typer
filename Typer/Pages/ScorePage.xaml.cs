@@ -24,10 +24,9 @@ namespace Typer.Pages
     /// </summary>
     public partial class ScorePage : Page
     {
-
+        List<Score> scores = Score.ReturnScores();
         public ScorePage()
         {
-            List<Score> scores = Score.ReturnScores();
 
             Score score = new Score();
 
@@ -41,6 +40,22 @@ namespace Typer.Pages
             InitializeComponent();
             Score.SetTable(ScoreTable, scores);
             score.WriteScoreToXmlFile();
+        }
+
+        private void ScoreTable_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
+        {
+            DataGridRow row = e.Row;
+            DataGridColumn column = e.Column;
+
+            var viewModel = (DataRowView)row.Item;
+            List<object> scoreList = viewModel.Row.ItemArray.ToList();
+            
+            DateTime date = DateTime.Parse(scoreList[5].ToString());
+
+            if (date.ToString() != scores[scores.Count - 1].Date)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

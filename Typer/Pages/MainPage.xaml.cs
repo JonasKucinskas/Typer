@@ -31,12 +31,7 @@ namespace Typer.Pages
         private void Grid_Click(object sender, RoutedEventArgs e)//TODO ka daro sitas kodas?
         {
 
-            var click = e.OriginalSource as NavButton;
-
-            if (click != null)
-            {
-                NavigationService.Navigate(click.NavUri);
-            }
+            
         }
 
         private void QuitButton_Click(object sender, RoutedEventArgs e)
@@ -59,6 +54,12 @@ namespace Typer.Pages
         {
             GamePage gamePage = new GamePage();
             this.NavigationService.Navigate(gamePage);
+        }
+
+        private void ScoresButton_Click(object sender, RoutedEventArgs e)
+        {
+            ScorePage page = new ScorePage();
+            this.NavigationService.Navigate(page);
         }
     }
 }

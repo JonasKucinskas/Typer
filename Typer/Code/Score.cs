@@ -30,7 +30,8 @@ namespace Typer
         public int Time { get; set; }
 
         [XmlElement(ElementName = "Date")]
-        public string Date = DateTime.Now.ToString();
+        public string Date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
         public static void SetTable(DataGrid ScoreTable, List<Score> scores)
         {
             DataTable dt = new DataTable();
@@ -85,7 +86,6 @@ namespace Typer
                 row["FileName"] = score.FileName;
                 row["Date"] = score.Date;
 
-
                 dt.Rows.Add(row);
             }
 
@@ -96,25 +96,6 @@ namespace Typer
 
         public void WriteScoreToXmlFile()
         {
-
-            /*
-            XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
-            ns.Add("", "");
-            var xml = "";
-            
-            using (StringWriter writer = new StringWriter())
-            {
-                serializer.Serialize(writer, score1);
-                
-                xml = writer.ToString(); // Your XML
-            }
-            
-            using (StreamWriter write = new StreamWriter(path, false))
-            {
-                serializer.Serialize(write, scores);
-            }
-            */
-
             string path = Environment.CurrentDirectory + "\\Data\\Scores\\Scores.xml";
             XmlSerializer serializer = new XmlSerializer(typeof(List<Score>));
 
@@ -125,7 +106,7 @@ namespace Typer
             score.WordCount = this.WordCount;
 
 
-            List<Score> scores = new List<Score>();
+            List<Score> scores = new List<Score>();//Have to add object to list before writing to xml, otherwise I couldnt append to xml later.
             scores.Add(score);
 
             XmlDocument doc = new XmlDocument();

@@ -101,7 +101,7 @@ namespace Typer.Pages
 
             if (File.Exists(path + LanguageSelectBox.Text + ".txt"))
             {
-                config.FileName = LanguageSelectBox.Text;//
+                config.FileName = LanguageSelectBox.Text;
                 Config.WriteToConfig(config);
             }
             else MessageBox.Show("An error just occurred: Entered file name does not exist", "File does not exits", MessageBoxButton.OK, MessageBoxImage.Error);

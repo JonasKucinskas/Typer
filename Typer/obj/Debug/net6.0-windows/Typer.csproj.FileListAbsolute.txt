@@ -20,7 +20,6 @@ C:\Users\Gaming\Desktop\program\c#\Typer\Typer\obj\Debug\net6.0-windows\Typer.pd
 C:\Users\Gaming\Desktop\program\c#\Typer\Typer\obj\Debug\net6.0-windows\Typer.genruntimeconfig.cache
 C:\Users\Gaming\Desktop\program\c#\Typer\Typer\obj\Debug\net6.0-windows\ref\Typer.dll
 C:\Users\Gaming\Desktop\program\c#\Typer\Typer\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
-C:\Users\Gaming\Desktop\program\c#\Typer\Typer\obj\Debug\net6.0-windows\Themes\Generic.baml
 C:\Users\Gaming\Desktop\program\c#\Typer\Typer\obj\Debug\net6.0-windows\Pages\GamePage.g.cs
 C:\Users\Gaming\Desktop\program\c#\Typer\Typer\obj\Debug\net6.0-windows\Pages\GamePage.baml
 C:\Users\Gaming\Desktop\program\c#\Typer\Typer\obj\Debug\net6.0-windows\Pages\MainPage.g.cs
@@ -40,3 +39,4 @@ C:\Users\Gaming\Desktop\program\c#\Typer\Typer\bin\Debug\net6.0-windows\NAudio.W
 C:\Users\Gaming\Desktop\program\c#\Typer\Typer\bin\Debug\net6.0-windows\NAudio.WinMM.dll
 C:\Users\Gaming\Desktop\program\c#\Typer\Typer\obj\Debug\net6.0-windows\Pages\ScorePage.g.cs
 C:\Users\Gaming\Desktop\program\c#\Typer\Typer\obj\Debug\net6.0-windows\Pages\ScorePage.baml
+C:\Users\Gaming\Desktop\program\c#\Typer\Typer\obj\Debug\net6.0-windows\Typer_Content.g.cs

@@ -9,6 +9,8 @@
       Title="ScorePage">
 
     <Grid Background="White">
-        <DataGrid Height="334" Width="732" HorizontalAlignment="Center" Name="ScoreTable" VerticalAlignment="Center" BeginningEdit="ScoreTable_BeginningEdit"/>
+        <DataGrid Height="auto" Width="auto" HorizontalAlignment="Center" Name="ScoreTable" VerticalAlignment="Center" BeginningEdit="ScoreTable_BeginningEdit" CellEditEnding="ScoreTable_CellEditEnding" PreviewKeyDown="ScoreTable_PreviewKeyDown"/>
+        <Button Name="SaveExitButton" Content="Save and exit" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Click="SaveExitButton_Click" Margin="10,0,0,10"/>
+
     </Grid>
 </Page>
